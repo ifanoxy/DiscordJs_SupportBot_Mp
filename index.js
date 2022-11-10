@@ -12,12 +12,6 @@ const client = new Client({
 client.commands = new Collection();
 client.config = require("./config.json");
 
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({
-    filePath: "Database.sqlite"
-});
-module.exports = db
-
 client
     .login(process.env.TOKEN || client.config.token)
     .then(() => {
