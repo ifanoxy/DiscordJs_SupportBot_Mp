@@ -15,21 +15,21 @@ module.exports = {
         const id = interaction.customId.startsWith(`Répondre_${interaction.channel.id}_`)
         if(id === true){
             const member = interaction.customId.replace(`Répondre_${interaction.channel.id}_`, "")
-            client.users.cache.get(member).send({embeds: [new EmbedBuilder().setColor("Blurple").setTitle('Vous avez reçu une réponse !').setDescription(`__Réponse de ${interaction.user.tag}__: \n\n${interaction.fields.getTextInputValue('Reponse')}`)]})
+            client.users.cache.get(member).send({embeds: [new EmbedBuilder().setColor("Blurple").setTitle('You received a response !').setDescription(`__Response from ${interaction.user.tag}__: \n\n${interaction.fields.getTextInputValue('Reponse')}`)]})
             const row = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
                 .setCustomId('Fermer_support')
                 .setStyle(ButtonStyle.Danger)
-                .setLabel('Fermer le support'),
+                .setLabel('Close support'),
                 new ButtonBuilder()
                 .setCustomId('Support_Disable')
                 .setStyle(ButtonStyle.Primary)
-                .setLabel('Répondre')
+                .setLabel('Respond')
                 .setDisabled(true)
             )
             interaction.update({components: [row]})
-            interaction.message.reply({embeds:[new EmbedBuilder().setColor('Green').setTitle(`Réponse de ${interaction.user.username}`).setDescription(`__Description :__\n${interaction.fields.getTextInputValue('Reponse')}`).setTimestamp()]})
+            interaction.message.reply({embeds:[new EmbedBuilder().setColor('Green').setTitle(`Response from ${interaction.user.username}`).setDescription(`__Description :__\n${interaction.fields.getTextInputValue('Reponse')}`).setTimestamp()]})
         } 
     }
 }
