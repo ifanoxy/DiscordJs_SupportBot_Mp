@@ -16,11 +16,11 @@ module.exports = {
         if(id === true){
             const modal = new ModalBuilder()
 			.setCustomId(interaction.customId)
-			.setTitle('Réponse Support');
+			.setTitle('Response Support');
 
 		const oned = new TextInputBuilder()
 			.setCustomId('Reponse')
-			.setLabel("Définissez la réponse.")
+			.setLabel("Define the answer.")
 			.setStyle(TextInputStyle.Paragraph);
 		const one = new ActionRowBuilder().addComponents(oned);
 
