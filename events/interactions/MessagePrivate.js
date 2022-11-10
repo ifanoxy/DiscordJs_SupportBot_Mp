@@ -13,7 +13,7 @@ module.exports = {
         if(message.channel.type !== 1)return;
         if(message.author.id == client.user.id)return;
         const support = config.Categorie
-        if(!client.channels.cache.get(support))return message.author.send('Votre message à bien reçu, mais le support n\'est pas activé.');
+        if(!client.channels.cache.get(support))return message.author.send('Your message has been received, but the support is not activated.');
         if(!support)return;
         const channel = client.channels.cache.find(chn => chn.topic == `${message.author.id}`)
         if(channel){
@@ -22,15 +22,15 @@ module.exports = {
                 new ButtonBuilder()
                 .setCustomId('Fermer_support')
                 .setStyle(ButtonStyle.Danger)
-                .setLabel('Fermer le support'),
+                .setLabel('Close support'),
                 new ButtonBuilder()
                 .setCustomId(`Répondre_${channel.id}_${message.author.id}`)
                 .setStyle(ButtonStyle.Primary)
-                .setLabel('Répondre')
+                .setLabel('Respond')
                 .setDisabled(false)
             )
             const img = message.attachments.map(a => a.url)
-            client.channels.cache.get(channel.id).send({components: [row],embeds:[new EmbedBuilder().setColor('Blue').setTitle(`Support de ${message.author.username}`).setDescription(`__Description :__\n${message.content}`).setTimestamp()], files: img})
+            client.channels.cache.get(channel.id).send({components: [row],embeds:[new EmbedBuilder().setColor('Blue').setTitle(`Support of ${message.author.username}`).setDescription(`__Description :__\n${message.content}`).setTimestamp()], files: img})
             .then(
                 message.author.send(config.message)
             )
@@ -46,14 +46,14 @@ module.exports = {
                 new ButtonBuilder()
                 .setCustomId('Fermer_support')
                 .setStyle(ButtonStyle.Danger)
-                .setLabel('Fermer le support'),
+                .setLabel('Close support'),
                 new ButtonBuilder()
                 .setCustomId(`Répondre_${chn.id}_${message.author.id}`)
                 .setStyle(ButtonStyle.Primary)
-                .setLabel('Répondre')
+                .setLabel('Respond')
                 .setDisabled(false)
             )
-            client.channels.cache.get(chn.id).send({components: [row],embeds:[new EmbedBuilder().setColor('Blue').setTitle(`Support de ${message.author.username}`).setDescription(`__Description :__\n${message.content}`).setTimestamp()]})
+            client.channels.cache.get(chn.id).send({components: [row],embeds:[new EmbedBuilder().setColor('Blue').setTitle(`Support of ${message.author.username}`).setDescription(`__Description :__\n${message.content}`).setTimestamp()]})
         }).then(
             message.author.send(config.message)
         )
