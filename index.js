@@ -26,13 +26,13 @@ client
     .catch(err => {
         switch(err.message){
             case "An invalid token was provided." : {
-                return console.log("Le token saisi est invalide ou introuvable !")
+                return console.log("The token entered is invalid or not found !")
             }break;
             case "Privileged intent provided is not enaled or whitelisted." : {
-                return console.log("Vous devez sélectionner les intentions 'Guild_Members' dans votre discord developer portal !")
+                return console.log("You need to select 'Guild_Members' intents in your discord developer portal !")
             }break;
             default : {
-                return console.log("Une erreur inattendue est survenue ! Veuillez contacter le support pour obtenir de l'aide." + "\n\n" + err.stack)
+                return console.log("An unexpected error occurred ! Please contact support for assistance." + "\n\n" + err.stack)
             }break;
         }
     })
